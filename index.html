@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        body{
+            margin: 0px;
+            padding: 0px;
+            height: 100vh;
+            overflow: hidden;
+            background-image: linear-gradient(rgb(250, 44, 44),blue,rgb(0, 132, 255));
+        }
+        form{
+            font-family:monospace;
+            border-radius: 1px;
+            background-color: rgba(0, 0, 0, 0.082);
+            backdrop-filter: blur(20px);
+            width: 250px;
+            margin: 50%;
+            margin-top: 12%;
+            transform: translate(-50%,0%);
+            display: grid;
+            grid-template-columns:1fr 1fr 1fr 1fr;
+            grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+            grid-template-areas: 
+            "input input input input"
+            "clear clear del div"
+            "sev eig nin mul"
+            "six fiv fou min"
+            "thr two one plus"
+            "zer dot equal plus"
+            ;
+            overflow: hidden;
+        }
+        input{
+            width: 98%;
+            height: 40px;
+            font-size: 30px;
+            text-align: right;
+            grid-area: input;
+            margin-left: 0px;
+            height: 56px;
+            background-color: rgba(255, 255, 255, 0.89);
+            border:0px;
+            font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            overflow: auto;
+        }
+        .num{
+            display: inline-block;
+            width: 61px;
+            height: 60px;
+            border: 1px solid rgba(255, 253, 253, 0.267);
+            padding: 0px;
+            margin: 0px;
+            cursor: default;
+            text-align: center;
+            color: white;
+            font-size: 40px;
+        }
+        .num:active{
+            background-color: rgb(0, 255, 0);
+        }
+        .num::selection{
+            background-color: transparent;
+        }
+        .clear{
+            width: 124px;
+            grid-area: clear;
+        }
+        .clear:active{
+            background-image: linear-gradient(blue,  navy);
+        }
+        .plus{
+            height: 122px;
+            grid-area: plus;
+        }
+        .plus:active{
+            background-image: linear-gradient(red,yellow);
+        }
+        .equal:active{
+            background-image: linear-gradient(rgb(166, 255, 0),green);
+        }
+        .del{
+            font-size: 20px;
+        }
+        #first{position: absolute;
+            background-color: rgba(250, 208, 23, 0.884);
+            height: 100vh;
+            width: 100vw;
+            transform: scaleY(-50);
+            transform: matrix(1,0.7,0,0.5,0,0) ;
+        }
+        @media screen and (max-width : 600px){
+            form{
+            transform: translate(-50%,50%);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="first"></div>
+    <form class="calculator" name="calc">
+        <input type="text" class="value" name="txt" placeholder="00" maxlength="15"/>
+        <span class="num clear" onclick="document.calc.txt.value =''">C</span>
+        <span class="num del" onclick="document.calc.txt.value =''" style="grid-area:del;">DEL</span>
+        <span class="num" onclick="document.calc.txt.value +='/'" style="grid-area:div;">/</span>
+        <span class="num" onclick="document.calc.txt.value +='*'"style="grid-area:mul";>*</span>
+        <span class="num" onclick="document.calc.txt.value +='7'">7</span>
+        <span class="num" onclick="document.calc.txt.value +='8'">8</span>
+        <span class="num" onclick="document.calc.txt.value +='9'">9</span>
+        <span class="num" onclick="document.calc.txt.value +='4'">4</span>
+        <span class="num" onclick="document.calc.txt.value +='5'">5</span>
+        <span class="num" onclick="document.calc.txt.value +='6'">6</span>
+        <span class="num" onclick="document.calc.txt.value +='-'">-</span>
+        <span class="num plus" onclick="document.calc.txt.value +='+'">+</span>
+        <span class="num" onclick="document.calc.txt.value +='1'">1</span>
+        <span class="num" onclick="document.calc.txt.value +='2'">2</span>
+        <span class="num" onclick="document.calc.txt.value +='3'">3</span>
+        <span class="num" onclick="document.calc.txt.value +='0'">0</span>
+        <span class="num" onclick="document.calc.txt.value +='.'">.</span>
+        <span class="num equal" onclick="document.calc.txt.value = eval(calc.txt.value)">=</span>
+    </form>
+</body>
+</html>
